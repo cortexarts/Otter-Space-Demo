@@ -168,5 +168,10 @@ public class MenuManager : MonoBehaviour
                 TogglePause();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("Main_menu");
+        }
     }
 }
