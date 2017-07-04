@@ -136,6 +136,7 @@ public class MenuManager : MonoBehaviour
 
     public void SkipScene()
     {
+        audioManager.PlaySound(pressButtonSound);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

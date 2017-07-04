@@ -10,11 +10,20 @@ public class KeyframeCinematic : MonoBehaviour
     public bool TrackAnimationTime = false;
     public float AnimationTracker = 0.0f;
 
-	// Use this for initialization
-	void Start ()
+    [SerializeField]
+    string pageTurn = "PageTurnSound";
+
+    AudioManager audioManager;
+
+    // Use this for initialization
+    void Start ()
     {
-		
-	}
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No audiomanager found!");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -39,6 +48,7 @@ public class KeyframeCinematic : MonoBehaviour
     {
         if (CurrentFrame == 1 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_1");
             CurrentFrame++;
             AnimationTracker = 0.0f;
@@ -46,6 +56,7 @@ public class KeyframeCinematic : MonoBehaviour
         }
         else if (CurrentFrame == 2 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_2");
             CurrentFrame++;
             AnimationTracker = 0.0f;
@@ -53,6 +64,7 @@ public class KeyframeCinematic : MonoBehaviour
         }
         else if (CurrentFrame == 3 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_3");
             CurrentFrame++;
             AnimationTracker = 0.0f;
@@ -60,6 +72,7 @@ public class KeyframeCinematic : MonoBehaviour
         }
         else if (CurrentFrame == 4 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_4");
             CurrentFrame++;
             AnimationTracker = 0.0f;
@@ -67,6 +80,7 @@ public class KeyframeCinematic : MonoBehaviour
         }
         else if (CurrentFrame == 5 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_5");
             CurrentFrame++;
             AnimationTracker = 0.0f;
@@ -74,6 +88,7 @@ public class KeyframeCinematic : MonoBehaviour
         }
         else if (CurrentFrame == 6 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_6");
             CurrentFrame++;
             AnimationTracker = 0.0f;
@@ -81,6 +96,7 @@ public class KeyframeCinematic : MonoBehaviour
         }
         else if (CurrentFrame == 7 && CanPlayNextAnimation)
         {
+            audioManager.PlaySound(pageTurn);
             GetComponent<Animation>().Play("KeyFrame_cinematic_7");
             CurrentFrame++;
             AnimationTracker = 0.0f;
