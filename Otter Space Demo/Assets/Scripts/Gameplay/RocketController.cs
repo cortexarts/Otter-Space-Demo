@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class RocketController : MonoBehaviour
             currentFuelAmount = PlayerPrefs.GetFloat("CurrentMoveSpeed");
         }
 
-        if (PlayerPrefs.GetFloat("fuelAmount") <= 0.0f)
+        if (PlayerPrefs.GetFloat("fuelAmount") <= 0.0f || SceneManager.GetActiveScene().name == "Earth_takeoff")
         {
             PlayerPrefs.SetFloat("fuelAmount", currentFuelAmount);
         }

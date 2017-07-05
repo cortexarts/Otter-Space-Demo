@@ -158,20 +158,18 @@ public class MenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SceneManager.GetActiveScene().name == "MainMenu")
-            {
                 Debug.Log("Quit game!");
                 Application.Quit();
-            }
-            else
-            {
-                TogglePause();
-            }
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene("Main_menu");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

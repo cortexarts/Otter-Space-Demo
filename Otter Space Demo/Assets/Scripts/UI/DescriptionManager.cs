@@ -12,7 +12,7 @@ public class DescriptionManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        DescriptionText.text = " ";
+        DescriptionText.text = "Choose one of the fuel types as your rocket propellant.";
 
         audioManager = AudioManager.instance;
         if (audioManager == null)
