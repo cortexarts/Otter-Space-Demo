@@ -38,6 +38,24 @@ public class RocketController : MonoBehaviour
             currentFuelAmount = PlayerPrefs.GetFloat("CurrentMoveSpeed");
         }
 
+        if (PlayerPrefs.GetFloat("fuelAmount") <= 0.0f)
+        {
+            PlayerPrefs.SetFloat("fuelAmount", currentFuelAmount);
+        }
+        else
+        {
+            currentFuelAmount = PlayerPrefs.GetFloat("fuelAmount");
+        }
+
+        if (PlayerPrefs.GetString("hasLeftEarth") == "true")
+        {
+            hasLeftEarth = true;
+        }
+        else
+        {
+            hasLeftEarth = false;
+        }
+
         audioManager = AudioManager.instance;
 
         if (audioManager == null)
@@ -49,31 +67,31 @@ public class RocketController : MonoBehaviour
         {
             maxMoveSpeed = 10.0f;
             speedScalar = 0.05f;
-            decayRatio = 0.1f;
+            decayRatio = 0.4f;
         }
         else if (PlayerPrefs.GetString("FuelType") == "Diesel")
         {
             maxMoveSpeed = 10.0f;
             speedScalar = 0.05f;
-            decayRatio = 0.08f;
+            decayRatio = 0.5f;
         }
         else if (PlayerPrefs.GetString("FuelType") == "Kerosene")
         {
             maxMoveSpeed = 12.0f;
             speedScalar = 0.09f;
-            decayRatio = 0.05f;
+            decayRatio = 0.2f;
         }
         else if (PlayerPrefs.GetString("FuelType") == "Hydrogen")
         {
             maxMoveSpeed = 15.0f;
             speedScalar = 0.09f;
-            decayRatio = 0.05f;
+            decayRatio = 0.2f;
         }
         else if (PlayerPrefs.GetString("FuelType") == "Coal")
         {
             maxMoveSpeed = 2.0f;
             speedScalar = 0.01f;
-            decayRatio = 1f;
+            decayRatio = 1.0f;
         }
         else
         {
@@ -177,5 +195,6 @@ public class RocketController : MonoBehaviour
     public void SaveProgress()
     {
         PlayerPrefs.SetFloat("CurrentMoveSpeed", currentFuelAmount);
+        PlayerPrefs.SetString("hasLeftEarth", "true");
     }
 }
