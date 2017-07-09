@@ -7,8 +7,8 @@ public class RocketController : MonoBehaviour
 {
     public GameObject FireLeft;
     public GameObject FireRight;
-    public GameObject FireEmitterLeft;
-    public GameObject FireEmitterRight;
+    public GameObject SmokeEmitterLeft;
+    public GameObject SmokeEmitterRight;
 
     AudioManager audioManager;
     private bool rocketEngineSoundIsPlaying = false;
@@ -39,14 +39,7 @@ public class RocketController : MonoBehaviour
             currentFuelAmount = PlayerPrefs.GetFloat("CurrentMoveSpeed");
         }
 
-        if (PlayerPrefs.GetFloat("fuelAmount") <= 0.0f || SceneManager.GetActiveScene().name == "Earth_takeoff")
-        {
-            PlayerPrefs.SetFloat("fuelAmount", currentFuelAmount);
-        }
-        else
-        {
-            currentFuelAmount = PlayerPrefs.GetFloat("fuelAmount");
-        }
+        currentFuelAmount = PlayerPrefs.GetFloat("fuelAmount");
 
         if (PlayerPrefs.GetString("hasLeftEarth") == "true")
         {
@@ -122,7 +115,7 @@ public class RocketController : MonoBehaviour
                 currentMoveSpeed = maxMoveSpeed;
             }
 
-            if (!FireLeft.activeInHierarchy && !FireRight.activeInHierarchy && hasLeftEarth == false)
+            if (!FireLeft.activeInHierarchy && !FireRight.activeInHierarchy)
             {
                 FireLeft.SetActive(true);
                 FireRight.SetActive(true);
@@ -145,10 +138,10 @@ public class RocketController : MonoBehaviour
                 }
             }
 
-            if (!FireEmitterLeft.activeInHierarchy && !FireEmitterRight.activeInHierarchy && hasLeftEarth == false)
+            if (!SmokeEmitterLeft.activeInHierarchy && !SmokeEmitterRight.activeInHierarchy && hasLeftEarth == false)
             {
-                FireEmitterLeft.SetActive(true);
-                FireEmitterRight.SetActive(true);
+                SmokeEmitterLeft.SetActive(true);
+                SmokeEmitterRight.SetActive(true);
             }
 
             currentFuelAmount -= Time.deltaTime * decayRatio;
@@ -167,18 +160,18 @@ public class RocketController : MonoBehaviour
                 rocketEngineSoundIsPlaying = false;
             }
 
-            if (FireEmitterLeft.activeInHierarchy || FireEmitterRight.activeInHierarchy)
+            if (SmokeEmitterLeft.activeInHierarchy || SmokeEmitterRight.activeInHierarchy)
             {
-                FireEmitterLeft.SetActive(false);
-                FireEmitterRight.SetActive(false);
+                SmokeEmitterLeft.SetActive(false);
+                SmokeEmitterRight.SetActive(false);
             }
         }
 
         if (hasLeftEarth)
         {
             audioManager.StopSound("RocketEngineLoop");
-            FireEmitterLeft.SetActive(false);
-            FireEmitterRight.SetActive(false);
+            SmokeEmitterLeft.SetActive(false);
+            SmokeEmitterRight.SetActive(false);
         }
 
         // Ammount to move

@@ -46,6 +46,10 @@ public class StateMager : MonoBehaviour
             GetComponent<RocketController>().SaveProgress();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+        else if (coll.gameObject.tag == "MoonEscape")
+        {
+            GetComponent<Rigidbody2D>().gravityScale = 0.0f;
+        }
     }
 
     void OnTriggerExit2D(Collider2D coll)

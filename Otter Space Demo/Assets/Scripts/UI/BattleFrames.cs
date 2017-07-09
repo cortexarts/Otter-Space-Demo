@@ -40,6 +40,7 @@ public class BattleFrames : MonoBehaviour {
 
         if (CurrentFrame >= 5 && CanPlayNextAnimation)
         {
+            PlayerPrefs.SetString("hasLeftEarth", "false");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

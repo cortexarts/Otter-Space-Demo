@@ -38,6 +38,11 @@ public class MenuManager : MonoBehaviour
         {
             Debug.LogError("No audiomanager found!");
         }
+
+        if (SceneManager.GetActiveScene().name == "Main_menu")
+        {
+            PlayerPrefs.SetFloat("fuelAmount", 100);
+        }
     }
 
     public void StartGame()
@@ -167,9 +172,14 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene("Main_menu");
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Main_menu")
+        {
+            PlayerPrefs.SetFloat("fuelAmount", 100);
         }
     }
 }
