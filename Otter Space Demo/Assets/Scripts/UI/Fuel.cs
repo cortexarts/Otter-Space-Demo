@@ -18,10 +18,10 @@ public class Fuel : MonoBehaviour
     void Update()
     {
         GameObject playerPointer = GameObject.Find("Rocket");
-        RocketController playerScript = playerPointer.GetComponent<RocketController>();
-        currentfuelPointer = playerScript.currentFuelAmount;
+        RocketControllerII playerScript = playerPointer.GetComponent<RocketControllerII>();
+        currentfuelPointer = playerScript.CurrentFuelAmount();
 
-        loadingBar.GetComponent<Image>().fillAmount = currentfuelPointer / 100;
+        loadingBar.GetComponent<Image>().fillAmount = currentfuelPointer / 100f;
     }
 
     private void OnDestroy()

@@ -14,8 +14,8 @@ public class UVScrolling : MonoBehaviour
 
         Vector2 offset = mat.mainTextureOffset;
 
-        offset.x = transform.position.x / transform.localScale.x / parallax;
-        offset.y = transform.position.y / transform.localScale.y / parallax;
+        offset.x = transform.position.x / transform.localScale.x;
+        offset.y = transform.position.y / transform.localScale.y;
 
         mat.mainTextureOffset = offset;
     }
