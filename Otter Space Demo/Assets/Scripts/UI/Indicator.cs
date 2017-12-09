@@ -6,18 +6,19 @@ using UnityEngine;
 public class Indicator : MonoBehaviour {
 
     public Texture2D icon; //The icon. Preferably an arrow pointing upwards.
-    public float iconSize = 50f;
+    public float iconSize = 25f;
     [HideInInspector]
     public GUIStyle gooey; //GUIStyle to make the box around the icon invisible. Public so that everything has the default stats.
     Vector2 indRange;
     float scaleRes = Screen.width / 500; //The width of the screen divided by 500. Will make the GUI automatically
                                          //scale with varying resolutions.
+    string m_ObjectName;
     Camera cam;
     bool visible = true; //Whether or not the object is visible in the camera.
 
     void Start()
     {
-        visible = GetComponent<SpriteRenderer>().isVisible;
+        visible = false;
 
         cam = Camera.main; //Don't use Camera.main in a looping method, its very slow, as Camera.main actually
                            //does a GameObject.Find for an object tagged with MainCamera.
@@ -27,6 +28,7 @@ public class Indicator : MonoBehaviour {
         indRange /= 2f;
 
         gooey.normal.textColor = new Vector4(0, 0, 0, 0); //Makes the box around the icon invisible.
+        m_ObjectName = gameObject.name;
     }
 
     void OnGUI()
@@ -47,6 +49,7 @@ public class Indicator : MonoBehaviour {
 
             float angle = Mathf.Atan2(pdir.x, pdir.y) * Mathf.Rad2Deg;
 
+            GUI.Label(new Rect(indPos.x, indPos.y, scaleRes * iconSize*2, scaleRes * iconSize), m_ObjectName);
             GUIUtility.RotateAroundPivot(angle, indPos); //Rotates the GUI. Only rotates GUI drawn after the rotate is called, not before.
             GUI.Box(new Rect(indPos.x, indPos.y, scaleRes * iconSize, scaleRes * iconSize), icon, gooey);
             GUIUtility.RotateAroundPivot(0, indPos); //Rotates GUI back to the default so that GUI drawn after is not rotated.
